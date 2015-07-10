@@ -5,12 +5,36 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <TimePicker
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/timePillTracker"
+        android:layout_gravity="center_horizontal|top" />
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Profile"
-        style="@style/fragment_text"
-        android:layout_gravity="center"
-        android:id="@+id/textView"/>
+        android:inputType="textPersonName"
+        android:text="Enter Task"
+        android:editable="false"
+        android:ems="10"
+        android:id="@+id/tvPillTracker"
+        android:layout_gravity="left|center_vertical" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:text="Name"
+        android:ems="10"
+        android:id="@+id/etPillTrackerValue"
+        android:layout_gravity="right|center_vertical" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Set Alarm"
+        android:id="@+id/bnCreateAlarm"
+        android:layout_gravity="center_horizontal|bottom" />
 
 </FrameLayout>
