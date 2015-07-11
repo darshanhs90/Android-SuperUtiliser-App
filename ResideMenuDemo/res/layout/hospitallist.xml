@@ -4,13 +4,25 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-
-    <TextView
+    <com.quinny898.library.persistentsearch.SearchBox
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Profile"
-        style="@style/fragment_text"
-        android:layout_gravity="center"
-        android:id="@+id/textView"/>
+        android:id="@+id/searchbox"
+        />
+<uk.co.senab.actionbarpulltorefresh.library.PullToRefreshLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/ptr_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <!-- Your content, here we're using a ScrollView -->
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    </ScrollView>
+
+</uk.co.senab.actionbarpulltorefresh.library.PullToRefreshLayout>
 
 </FrameLayout>

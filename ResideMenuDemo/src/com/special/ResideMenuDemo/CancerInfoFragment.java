@@ -65,7 +65,7 @@ public class CancerInfoFragment extends Fragment {
                 alertDialog.show();
             }
         });
-        webview.loadUrl("http://alpha.app.cancerapi.org/api/");
+        webview.loadUrl("http://cancerapi.org/webapp");
         return view;
     }
 

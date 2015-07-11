@@ -68,33 +68,33 @@ public class MenuActivity extends FragmentActivity implements View.OnClickListen
         resideMenu.setScaleValue(0.7f);
 
         // create menu items;
-        itemHome     = new ResideMenuItem(this, R.drawable.icon_home,     "Home");//done
-        itemOfflineHelp     = new ResideMenuItem(this, R.drawable.icon_home,     "Offline Help");
-        itemDataPlan     = new ResideMenuItem(this, R.drawable.icon_home,     "Data Plan Usage Checker");
+        itemHome     = new ResideMenuItem(this, R.drawable.icon_home,     "Health Summary");//https://api.humanapi.co/v1/human?access_token=demo
+        itemOfflineHelp     = new ResideMenuItem(this, R.drawable.icon_home,     "Organisations List");//http://api.bluebuttonconnector.healthit.gov/organizations?limit=30&offset=0
+        itemDataPlan     = new ResideMenuItem(this, R.drawable.icon_home,     "Health Care Providers");//http://api.bluebuttonconnector.healthit.gov/stage2?state=TX&zip=75150&limit=30&offset=0
         itemPillTracker     = new ResideMenuItem(this, R.drawable.icon_home,     "Pill Tracker");//done
-        itemPillIdentifier     = new ResideMenuItem(this, R.drawable.icon_home,     "Pill Identifier");
-        itemGlucometer     = new ResideMenuItem(this, R.drawable.icon_home,     "Glucometer Help");
+        itemPillIdentifier     = new ResideMenuItem(this, R.drawable.icon_home,     "Get Exercise Info");//https://api.humanapi.co/v1/human/activities/summaries?access_token=demo
+        itemGlucometer     = new ResideMenuItem(this, R.drawable.icon_home,     "Glucometer Help");//http://www.myglucohealth.net/forum/default.aspx
         itemInsulinHelper     = new ResideMenuItem(this, R.drawable.icon_home,     "Insulin Helper");
         itemCalendar     = new ResideMenuItem(this, R.drawable.icon_home,     "Calendar");//done
         itemAppointmentPhonenumber     = new ResideMenuItem(this, R.drawable.icon_home,     "Appointment Helper");
         itemMedicaid     = new ResideMenuItem(this, R.drawable.icon_home,     "MedicAid");
         itemCentralReport     = new ResideMenuItem(this, R.drawable.icon_home,     "Save Report");
-        itemReminder     = new ResideMenuItem(this, R.drawable.icon_home,     "Reminder");
+        itemReminder     = new ResideMenuItem(this, R.drawable.icon_home,     "Get Medication Info");//https://api.humanapi.co/v1/human/medical/medications?access_token=demo
         itemNotes     = new ResideMenuItem(this, R.drawable.icon_home,     "Notes");
         itemHospitalList     = new ResideMenuItem(this, R.drawable.icon_home,     "Hospital List");
         itemGeneticInfoSaver     = new ResideMenuItem(this, R.drawable.icon_home,     "Save Genetic Info");
         itemCancerInfo     = new ResideMenuItem(this, R.drawable.icon_home,     "Get Cancer Info");//done
-        itemNutritionFood     = new ResideMenuItem(this, R.drawable.icon_home,     "Get Food Info");
-        itemQandA     = new ResideMenuItem(this, R.drawable.icon_home,     "Ask a Doc");
-        itemMedicalcostOptimisation     = new ResideMenuItem(this, R.drawable.icon_home,     "Medicine Cost Optimiser");
-        itemDrugInfo= new ResideMenuItem(this, R.drawable.icon_home,     "Drug Info");
-        itemHealthInsuranceClaims= new ResideMenuItem(this, R.drawable.icon_home,     "Insurance Helper");
-        itemgetFDAHelp= new ResideMenuItem(this, R.drawable.icon_home,     "Get FDA Help");
-        itemQueryWeb= new ResideMenuItem(this, R.drawable.icon_home,     "Query the Web");
-        itemIncomeTracker= new ResideMenuItem(this, R.drawable.icon_home,     "Home");
+        itemNutritionFood     = new ResideMenuItem(this, R.drawable.icon_home,     "Food Info Search");//https://api.edamam.com/search?q=chicken&app_id=8e9d063b&app_key=8657a32df16db3063e61214978826997
+        itemQandA     = new ResideMenuItem(this, R.drawable.icon_home,     "My Profile");//https://api.humanapi.co/v1/human/medical/profile?access_token=demo
+        itemMedicalcostOptimisation     = new ResideMenuItem(this, R.drawable.icon_home,     "Medical Issues");//https://api.humanapi.co/v1/human/medical/issues?access_token=demo
+        itemDrugInfo= new ResideMenuItem(this, R.drawable.icon_home,     "Allergies");//https://api.humanapi.co/v1/human/medical/allergies?access_token=demo
+        itemHealthInsuranceClaims= new ResideMenuItem(this, R.drawable.icon_home,     "Test Results");//https://api.humanapi.co/v1/human/medical/test_results?access_token=demo
+        itemgetFDAHelp= new ResideMenuItem(this, R.drawable.icon_home,     "Get Meals Info");//https://api.humanapi.co/v1/human/food/meals?access_token=demo
+        itemQueryWeb= new ResideMenuItem(this, R.drawable.icon_home,     "Narratives");//https://api.humanapi.co/v1/human/medical/narratives?access_token=demo
+        itemIncomeTracker= new ResideMenuItem(this, R.drawable.icon_home,     "Income Tracker");
         itemBMITracker= new ResideMenuItem(this, R.drawable.icon_home,     "BMI");
         itemGroceriesTracker= new ResideMenuItem(this, R.drawable.icon_home,     "Groceries Map");//done
-        itemSmokingAndDrugTracker= new ResideMenuItem(this, R.drawable.icon_home,     "Habits Tracker");
+        itemSmokingAndDrugTracker= new ResideMenuItem(this, R.drawable.icon_home,     "Habits Tracker");//https://api.humanapi.co/v1/human/activities?access_token=demo
         itemTraumaHelper= new ResideMenuItem(this, R.drawable.icon_home,     "Trauma Helper");
 
 

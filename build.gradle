@@ -20,6 +20,7 @@ buildscript {
 
     dependencies {
         classpath 'com.android.tools.build:gradle:' + System.properties['androidGradlePluginVersion']
+
     }
 }
 
