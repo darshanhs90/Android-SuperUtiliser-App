@@ -68,14 +68,14 @@ public class MenuActivity extends FragmentActivity implements View.OnClickListen
         resideMenu.setScaleValue(0.7f);
 
         // create menu items;
-        itemHome     = new ResideMenuItem(this, R.drawable.icon_home,     "Home");
+        itemHome     = new ResideMenuItem(this, R.drawable.icon_home,     "Home");//done
         itemOfflineHelp     = new ResideMenuItem(this, R.drawable.icon_home,     "Offline Help");
         itemDataPlan     = new ResideMenuItem(this, R.drawable.icon_home,     "Data Plan Usage Checker");
-        itemPillTracker     = new ResideMenuItem(this, R.drawable.icon_home,     "Pill Tracker");
+        itemPillTracker     = new ResideMenuItem(this, R.drawable.icon_home,     "Pill Tracker");//done
         itemPillIdentifier     = new ResideMenuItem(this, R.drawable.icon_home,     "Pill Identifier");
         itemGlucometer     = new ResideMenuItem(this, R.drawable.icon_home,     "Glucometer Help");
         itemInsulinHelper     = new ResideMenuItem(this, R.drawable.icon_home,     "Insulin Helper");
-        itemCalendar     = new ResideMenuItem(this, R.drawable.icon_home,     "Calendar");
+        itemCalendar     = new ResideMenuItem(this, R.drawable.icon_home,     "Calendar");//done
         itemAppointmentPhonenumber     = new ResideMenuItem(this, R.drawable.icon_home,     "Appointment Helper");
         itemMedicaid     = new ResideMenuItem(this, R.drawable.icon_home,     "MedicAid");
         itemCentralReport     = new ResideMenuItem(this, R.drawable.icon_home,     "Save Report");
@@ -83,7 +83,7 @@ public class MenuActivity extends FragmentActivity implements View.OnClickListen
         itemNotes     = new ResideMenuItem(this, R.drawable.icon_home,     "Notes");
         itemHospitalList     = new ResideMenuItem(this, R.drawable.icon_home,     "Hospital List");
         itemGeneticInfoSaver     = new ResideMenuItem(this, R.drawable.icon_home,     "Save Genetic Info");
-        itemCancerInfo     = new ResideMenuItem(this, R.drawable.icon_home,     "Get Cancer Info");
+        itemCancerInfo     = new ResideMenuItem(this, R.drawable.icon_home,     "Get Cancer Info");//done
         itemNutritionFood     = new ResideMenuItem(this, R.drawable.icon_home,     "Get Food Info");
         itemQandA     = new ResideMenuItem(this, R.drawable.icon_home,     "Ask a Doc");
         itemMedicalcostOptimisation     = new ResideMenuItem(this, R.drawable.icon_home,     "Medicine Cost Optimiser");
@@ -93,7 +93,7 @@ public class MenuActivity extends FragmentActivity implements View.OnClickListen
         itemQueryWeb= new ResideMenuItem(this, R.drawable.icon_home,     "Query the Web");
         itemIncomeTracker= new ResideMenuItem(this, R.drawable.icon_home,     "Home");
         itemBMITracker= new ResideMenuItem(this, R.drawable.icon_home,     "BMI");
-        itemGroceriesTracker= new ResideMenuItem(this, R.drawable.icon_home,     "Groceries Map");
+        itemGroceriesTracker= new ResideMenuItem(this, R.drawable.icon_home,     "Groceries Map");//done
         itemSmokingAndDrugTracker= new ResideMenuItem(this, R.drawable.icon_home,     "Habits Tracker");
         itemTraumaHelper= new ResideMenuItem(this, R.drawable.icon_home,     "Trauma Helper");
 
