@@ -68,8 +68,8 @@ public class MenuActivity extends FragmentActivity implements View.OnClickListen
         resideMenu.setScaleValue(0.7f);
 
         // create menu items;
-        itemHome     = new ResideMenuItem(this, R.drawable.icon_home,     "Health Summary");//https://api.humanapi.co/v1/human?access_token=demo
-        itemOfflineHelp     = new ResideMenuItem(this, R.drawable.icon_home,     "Offline Help");
+        itemHome     = new ResideMenuItem(this, R.drawable.icon_home,     "Home");//done
+        itemOfflineHelp     = new ResideMenuItem(this, R.drawable.icon_home,     "Health Summary");//https://api.humanapi.co/v1/human?access_token=demo
         itemDataPlan     = new ResideMenuItem(this, R.drawable.icon_home,     "Health Care Providers");//http://api.bluebuttonconnector.healthit.gov/stage2?state=TX&zip=75150&limit=30&offset=0
         itemPillTracker     = new ResideMenuItem(this, R.drawable.icon_home,     "Pill Tracker");//done
         itemPillIdentifier     = new ResideMenuItem(this, R.drawable.icon_home,     "Get Exercise Info");//https://api.humanapi.co/v1/human/activities/summaries?access_token=demo
