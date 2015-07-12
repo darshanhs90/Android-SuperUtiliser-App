@@ -41,6 +41,10 @@ public class HospitalListFragment extends Fragment implements OnRefreshListener 
     Map<String, List<String>> laptopCollection;
     ExpandableListView expListView;
     HospitalListAdapter expListAdapter;
+
+
+
+    
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {

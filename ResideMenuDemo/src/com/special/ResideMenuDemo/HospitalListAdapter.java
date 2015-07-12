@@ -48,7 +48,6 @@ public class HospitalListAdapter extends BaseExpandableListAdapter {
         }
 
         TextView item = (TextView) convertView.findViewById(R.id.laptop1);
-
         TextView delete = (TextView) convertView.findViewById(R.id.laptop2);
         item.setText(laptop);
         return convertView;
