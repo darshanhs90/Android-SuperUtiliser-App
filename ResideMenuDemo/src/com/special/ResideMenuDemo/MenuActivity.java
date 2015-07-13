@@ -92,7 +92,7 @@ public class MenuActivity extends FragmentActivity implements View.OnClickListen
         itemgetFDAHelp= new ResideMenuItem(this, R.drawable.icon_home,     "Get Meals Info");//done
         itemQueryWeb= new ResideMenuItem(this, R.drawable.icon_home,     "Narratives");//done
         itemIncomeTracker= new ResideMenuItem(this, R.drawable.icon_home,     "Income Tracker");//------------
-        itemBMITracker= new ResideMenuItem(this, R.drawable.icon_home,     "SomeOther Thing");//--------------
+        itemBMITracker= new ResideMenuItem(this, R.drawable.icon_home,     "Data Usage");//--------------
         itemGroceriesTracker= new ResideMenuItem(this, R.drawable.icon_home,     "Groceries Map");//done
         itemSmokingAndDrugTracker= new ResideMenuItem(this, R.drawable.icon_home,     "Habits Tracker");//done
         itemTraumaHelper= new ResideMenuItem(this, R.drawable.icon_home,     "Trauma Helper");//--------------
