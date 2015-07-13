@@ -46,9 +46,8 @@ public class OfflineHelpFragment extends Fragment implements OnRefreshListener {
     ArrayList<String[]> arrayList;
     JSONArray jArray=new JSONArray();
     ArrayAdapter<String> arrayAdapter;
-    String LOGIN_URL = "http://api.bluebuttonconnector.healthit.gov/organizations?limit=30&offset=0";
+    String LOGIN_URL = "https://api.humanapi.co/v1/human?access_token=demo";
     ListView lv;
-    int offset=30;
     View view;
     List<String> lvArray = new ArrayList<String>();
 
@@ -119,11 +118,6 @@ public class OfflineHelpFragment extends Fragment implements OnRefreshListener {
     public void onRefreshStarted(View view) {
 
         Toast.makeText(getActivity(), "Refreshing", Toast.LENGTH_SHORT).show();
-
-        LOGIN_URL = "http://api.bluebuttonconnector.healthit.gov/organizations?limit=30&offset="+offset;
-        offset+=30;
-        if(offset>150)
-            offset=0;
         new GetList().execute();
         mPullToRefreshLayout.setRefreshComplete();
     }
@@ -144,39 +138,90 @@ public class OfflineHelpFragment extends Fragment implements OnRefreshListener {
             try {
 
                 List<NameValuePair> params = new ArrayList<NameValuePair>();
-                JSONObject j=(JSONObject)new JSONArrayParser().getJsonObject(LOGIN_URL);
-                JSONArray results= (JSONArray) j.get("results");
+                JSONObject jObj=(JSONObject)new JSONArrayParser().getJsonObject(LOGIN_URL);
+                //JSONArray results= (JSONArray) j.get("results");
                 groupList = new ArrayList<String>();
                 arrayList=new ArrayList<String[]>();
-                for (int  i=0;i<results.length();i++)
+                for (int  i=0;i<9;i++)
                 {
-                    JSONObject jObj= (JSONObject) results.get(i);
                     // Log.d("asd",jObj+"");
 
-                    groupList.add(jObj.get("organization").toString());
-                    Log.d("asd", groupList.get(i)+"");
-                    String str[]=new String[19];
-                    str[0]="Description : "+jObj.get("description").toString();
-                    str[1]="State : "+((JSONArray)jObj.get("states")).toString();
-                    str[2]="URL : "+((JSONObject)jObj.get("url")).get("login").toString();
-                    str[3]="Services";
-                    str[4]="Refills : "+((JSONObject)jObj.get("services")).get("refills").toString();
-                    str[5]="Automatic Refills : "+((JSONObject)jObj.get("services")).get("automatic_refills").toString();
-                    str[6]="Transfer Prescriptions : "+((JSONObject)jObj.get("services")).get("transfer_prescriptions").toString();
-                    str[7]="Bill Pay : "+((JSONObject)jObj.get("services")).get("bill_pay").toString();
-                    str[8]="Caregiving : "+((JSONObject)jObj.get("services")).get("caregiving").toString();
-                    str[9]="Dispute : "+((JSONObject)jObj.get("services")).get("dispute").toString();
-                    str[10]="Family Prescriptions : "+((JSONObject)jObj.get("services")).get("family_prescriptions").toString();
-                    str[11]="New Prescriptions : "+((JSONObject)jObj.get("services")).get("new_prescriptions").toString();
-                    str[12]="Open Notes : "+((JSONObject)jObj.get("services")).get("open_notes").toString();
-                    str[13]="Reminders : "+((JSONObject)jObj.get("services")).get("reminders").toString();
-                    str[14]="Scheduling : "+((JSONObject)jObj.get("services")).get("scheduling").toString();
-                    str[15]="Search : "+((JSONObject)jObj.get("services")).get("search").toString();
-                    str[16]="Secure Messaging : "+((JSONObject)jObj.get("services")).get("secure_messaging").toString();
-                    str[17]="Self Entered : "+((JSONObject)jObj.get("services")).get("self_entered").toString();
-                    str[18]="Shop : "+((JSONObject)jObj.get("services")).get("shop").toString();
 
-                    arrayList.add(i,str);
+                    String str[]=new String[10];
+                    if(i==0){
+                        groupList.add("Blood Glucose");
+                       str=new String[3];
+                        str[0]="Source : "+((JSONObject)jObj.get("bloodGlucose")).get("source").toString();
+                        str[1]="Value : "+((JSONObject)jObj.get("bloodGlucose")).get("value").toString()+((JSONObject)jObj.get("bloodGlucose")).get("unit").toString();
+                        str[2]="Time Stamp : "+((JSONObject)jObj.get("bloodGlucose")).get("timestamp").toString();
+                    }
+                    else if(i==1){
+                            groupList.add("Blood Oxygen");
+                            str=new String[3];
+                            str[0]="Source : "+((JSONObject)jObj.get("bloodOxygen")).get("source").toString();
+                            str[1]="Value : "+((JSONObject)jObj.get("bloodOxygen")).get("value").toString()+((JSONObject)jObj.get("bloodOxygen")).get("unit").toString();
+                            str[2]="Time Stamp : "+((JSONObject)jObj.get("bloodOxygen")).get("timestamp").toString();
+
+                    }
+                    else if(i==2){
+                        groupList.add("Blood Pressure");
+                        str=new String[5];
+                        str[0]="Source : "+((JSONObject)jObj.get("bloodPressure")).get("source").toString();
+                        str[1]="Systolic : "+((JSONObject)jObj.get("bloodPressure")).get("systolic").toString()+((JSONObject)jObj.get("bloodPressure")).get("unit").toString();
+                        str[2]="Diastolic : "+((JSONObject)jObj.get("bloodPressure")).get("diastolic").toString()+((JSONObject)jObj.get("bloodPressure")).get("unit").toString();
+                        str[3]="Heart Rate : "+((JSONObject)jObj.get("bloodPressure")).get("heartRate").toString();
+                        str[4]="Time Stamp : "+((JSONObject)jObj.get("bloodPressure")).get("timestamp").toString();
+                    }
+                    else if(i==3){
+                        groupList.add("BMI");
+                        str=new String[3];
+                        str[0]="Source : "+((JSONObject)jObj.get("bmi")).get("source").toString();
+                        str[1]="Value : "+((JSONObject)jObj.get("bmi")).get("value").toString()+((JSONObject)jObj.get("bmi")).get("unit").toString();
+                        str[2]="Time Stamp : "+((JSONObject)jObj.get("bmi")).get("timestamp").toString();
+
+                    }
+                    else if(i==4){
+                        groupList.add("Body Fat");
+                        str=new String[3];
+                        str[0]="Source : "+((JSONObject)jObj.get("bodyFat")).get("source").toString();
+                        str[1]="Value : "+((JSONObject)jObj.get("bodyFat")).get("value").toString()+((JSONObject)jObj.get("bodyFat")).get("unit").toString();
+                        str[2]="Time Stamp : "+((JSONObject)jObj.get("bodyFat")).get("timestamp").toString();
+                    }
+                    else if(i==5){
+                        groupList.add("Height");
+                        str=new String[3];
+                        str[0]="Source : "+((JSONObject)jObj.get("height")).get("source").toString();
+                        str[1]="Value : "+((JSONObject)jObj.get("height")).get("value").toString()+((JSONObject)jObj.get("height")).get("unit").toString();
+                        str[2]="Time Stamp : "+((JSONObject)jObj.get("height")).get("timestamp").toString();
+
+                    }
+                    else if(i==6){
+                        groupList.add("Heart Rate");
+                        str=new String[3];
+                        str[0]="Source : "+((JSONObject)jObj.get("heartRate")).get("source").toString();
+                        str[1]="Value : "+((JSONObject)jObj.get("heartRate")).get("value").toString()+((JSONObject)jObj.get("heartRate")).get("unit").toString();
+                        str[2]="Time Stamp : "+((JSONObject)jObj.get("heartRate")).get("timestamp").toString();
+
+                    }
+                    else if(i==7){
+                        groupList.add("Weight");
+                        str=new String[3];
+                        str[0]="Source : "+((JSONObject)jObj.get("weight")).get("source").toString();
+                        str[1]="Value : "+((JSONObject)jObj.get("weight")).get("value").toString()+((JSONObject)jObj.get("weight")).get("unit").toString();
+                        str[2]="Time Stamp : "+((JSONObject)jObj.get("weight")).get("timestamp").toString();
+
+                    }
+                    else if(i==8){
+                        groupList.add("Activity Summary");
+                        str=new String[5];
+                        str[0]="Source : "+((JSONObject)jObj.get("activitySummary")).get("source").toString();
+                        str[1]="Distance : "+((JSONObject)jObj.get("activitySummary")).get("distance").toString();
+                        str[2]="Duration : "+((JSONObject)jObj.get("activitySummary")).get("duration").toString();
+                        str[3]="Total : "+((JSONObject)jObj.get("activitySummary")).get("total").toString();
+                        str[4]="Calories : "+((JSONObject)jObj.get("activitySummary")).get("calories").toString();
+                    }
+
+                    arrayList.add(i, str);
                 }
 
 

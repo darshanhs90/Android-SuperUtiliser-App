@@ -69,32 +69,32 @@ public class MenuActivity extends FragmentActivity implements View.OnClickListen
 
         // create menu items;
         itemHome     = new ResideMenuItem(this, R.drawable.icon_home,     "Home");//done
-        itemOfflineHelp     = new ResideMenuItem(this, R.drawable.icon_home,     "Health Summary");//https://api.humanapi.co/v1/human?access_token=demo
-        itemDataPlan     = new ResideMenuItem(this, R.drawable.icon_home,     "Health Care Providers");//http://api.bluebuttonconnector.healthit.gov/stage2?state=TX&zip=75150&limit=30&offset=0
+        itemOfflineHelp     = new ResideMenuItem(this, R.drawable.icon_home,     "Health Summary");//done
+        itemDataPlan     = new ResideMenuItem(this, R.drawable.icon_home,     "Health Care Providers");//done
         itemPillTracker     = new ResideMenuItem(this, R.drawable.icon_home,     "Pill Tracker");//done
-        itemPillIdentifier     = new ResideMenuItem(this, R.drawable.icon_home,     "Get Exercise Info");//https://api.humanapi.co/v1/human/activities/summaries?access_token=demo
-        itemGlucometer     = new ResideMenuItem(this, R.drawable.icon_home,     "Glucometer Help");//http://www.myglucohealth.net/forum/default.aspx
+        itemPillIdentifier     = new ResideMenuItem(this, R.drawable.icon_home,     "Get Exercise Info");//done
+        itemGlucometer     = new ResideMenuItem(this, R.drawable.icon_home,     "Glucometer Help");//done
         itemInsulinHelper     = new ResideMenuItem(this, R.drawable.icon_home,     "Insulin Helper");//???
         itemCalendar     = new ResideMenuItem(this, R.drawable.icon_home,     "Calendar");//done
         itemAppointmentPhonenumber     = new ResideMenuItem(this, R.drawable.icon_home,     "Appointment Helper");//???
         itemMedicaid     = new ResideMenuItem(this, R.drawable.icon_home,     "MedicAid");//???
         itemCentralReport     = new ResideMenuItem(this, R.drawable.icon_home,     "Data Usage Info");//http://stackoverflow.com/questions/24366016/how-to-get-programmatically-the-data-usage-limit-set-by-user-on-android-os-confi
-        itemReminder     = new ResideMenuItem(this, R.drawable.icon_home,     "Get Medication Info");//https://api.humanapi.co/v1/human/medical/medications?access_token=demo
+        itemReminder     = new ResideMenuItem(this, R.drawable.icon_home,     "Get Medication Info");//done
         itemNotes     = new ResideMenuItem(this, R.drawable.icon_home,     "Insurance Claims");//https://platform.pokitdok.com/#/--node
-        itemHospitalList     = new ResideMenuItem(this, R.drawable.icon_home,     "Hospital List");////http://api.bluebuttonconnector.healthit.gov/organizations?limit=30&offset=0
+        itemHospitalList     = new ResideMenuItem(this, R.drawable.icon_home,     "Hospital List");//done
         itemGeneticInfoSaver     = new ResideMenuItem(this, R.drawable.icon_home,     "Save Genetic Info");//https://api.23andme.com/docs/reference/--node
         itemCancerInfo     = new ResideMenuItem(this, R.drawable.icon_home,     "Get Cancer Info");//done
         itemNutritionFood     = new ResideMenuItem(this, R.drawable.icon_home,     "Food Info Search");//https://api.edamam.com/search?q=chicken&app_id=8e9d063b&app_key=8657a32df16db3063e61214978826997
-        itemQandA     = new ResideMenuItem(this, R.drawable.icon_home,     "My Profile");//https://api.humanapi.co/v1/human/medical/profile?access_token=demo
-        itemMedicalcostOptimisation     = new ResideMenuItem(this, R.drawable.icon_home,     "Medical Issues");//https://api.humanapi.co/v1/human/medical/issues?access_token=demo
-        itemDrugInfo= new ResideMenuItem(this, R.drawable.icon_home,     "Allergies");//https://api.humanapi.co/v1/human/medical/allergies?access_token=demo
-        itemHealthInsuranceClaims= new ResideMenuItem(this, R.drawable.icon_home,     "Test Results");//https://api.humanapi.co/v1/human/medical/test_results?access_token=demo
-        itemgetFDAHelp= new ResideMenuItem(this, R.drawable.icon_home,     "Get Meals Info");//https://api.humanapi.co/v1/human/food/meals?access_token=demo
-        itemQueryWeb= new ResideMenuItem(this, R.drawable.icon_home,     "Narratives");//https://api.humanapi.co/v1/human/medical/narratives?access_token=demo
+        itemQandA     = new ResideMenuItem(this, R.drawable.icon_home,     "My Profile");//done
+        itemMedicalcostOptimisation     = new ResideMenuItem(this, R.drawable.icon_home,     "Medical Issues");//done
+        itemDrugInfo= new ResideMenuItem(this, R.drawable.icon_home,     "Allergies");//done
+        itemHealthInsuranceClaims= new ResideMenuItem(this, R.drawable.icon_home,     "Test Results");//done
+        itemgetFDAHelp= new ResideMenuItem(this, R.drawable.icon_home,     "Get Meals Info");//done
+        itemQueryWeb= new ResideMenuItem(this, R.drawable.icon_home,     "Narratives");//done
         itemIncomeTracker= new ResideMenuItem(this, R.drawable.icon_home,     "Income Tracker");//Inbuilt
         itemBMITracker= new ResideMenuItem(this, R.drawable.icon_home,     "SomeOther Thing");//???
         itemGroceriesTracker= new ResideMenuItem(this, R.drawable.icon_home,     "Groceries Map");//done
-        itemSmokingAndDrugTracker= new ResideMenuItem(this, R.drawable.icon_home,     "Habits Tracker");//https://api.humanapi.co/v1/human/activities?access_token=demo
+        itemSmokingAndDrugTracker= new ResideMenuItem(this, R.drawable.icon_home,     "Habits Tracker");//done
         itemTraumaHelper= new ResideMenuItem(this, R.drawable.icon_home,     "Trauma Helper");//???
 
 
@@ -127,6 +127,8 @@ public class MenuActivity extends FragmentActivity implements View.OnClickListen
         itemGroceriesTracker.setOnClickListener(this);
         itemSmokingAndDrugTracker.setOnClickListener(this);
         itemTraumaHelper.setOnClickListener(this);
+        itemDataPlan.setOnClickListener(this);
+
 
         resideMenu.addMenuItem(itemHome, ResideMenu.DIRECTION_LEFT);
         resideMenu.addMenuItem(itemOfflineHelp, ResideMenu.DIRECTION_LEFT);
@@ -155,7 +157,7 @@ public class MenuActivity extends FragmentActivity implements View.OnClickListen
         resideMenu.addMenuItem(itemGroceriesTracker, ResideMenu.DIRECTION_RIGHT);
         resideMenu.addMenuItem(itemSmokingAndDrugTracker, ResideMenu.DIRECTION_LEFT);
         resideMenu.addMenuItem(itemTraumaHelper, ResideMenu.DIRECTION_RIGHT);
-
+        resideMenu.addMenuItem(itemDataPlan, ResideMenu.DIRECTION_LEFT);
         // You can disable a direction by setting ->
         // resideMenu.setSwipeDirectionDisable(ResideMenu.DIRECTION_RIGHT);
 
@@ -225,7 +227,7 @@ public class MenuActivity extends FragmentActivity implements View.OnClickListen
         }else if(view ==itemgetFDAHelp){
             changeFragment(new FDAHelpFragment());
         }else if(view ==itemQueryWeb){
-            changeFragment(new HomeFragment());
+            changeFragment(new QueryWebFragment());
         }else if(view ==itemIncomeTracker){
             changeFragment(new IncomeTrackerFragment());
         }else if(view ==itemBMITracker){
@@ -236,6 +238,8 @@ public class MenuActivity extends FragmentActivity implements View.OnClickListen
             changeFragment(new SmokingAndDrugTrackerFragment());
         }else if(view ==itemTraumaHelper){
             changeFragment(new TraumaHelperFragment());
+        }else if(view ==itemDataPlan){
+            changeFragment(new DataPlanFragment());
         }
         resideMenu.closeMenu();
     }

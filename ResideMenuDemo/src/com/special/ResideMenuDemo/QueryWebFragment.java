@@ -10,7 +10,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
-
 import android.widget.ExpandableListView;
 import android.widget.ListView;
 import android.widget.Toast;
@@ -19,7 +18,6 @@ import org.apache.http.NameValuePair;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.List;
@@ -35,7 +33,7 @@ import uk.co.senab.actionbarpulltorefresh.library.listeners.OnRefreshListener;
  * Time: 下午1:31
  * Mail: specialcyci@gmail.com
  */
-public class MedicalcostOptimisationFragment extends Fragment implements OnRefreshListener {
+public class QueryWebFragment extends Fragment implements OnRefreshListener {
     private PullToRefreshLayout mPullToRefreshLayout;
 
     List<String> groupList;
@@ -46,9 +44,8 @@ public class MedicalcostOptimisationFragment extends Fragment implements OnRefre
     ArrayList<String[]> arrayList;
     JSONArray jArray=new JSONArray();
     ArrayAdapter<String> arrayAdapter;
-    String LOGIN_URL = "https://api.humanapi.co/v1/human/medical/issues?access_token=demo";
+    String LOGIN_URL = "https://api.humanapi.co/v1/human/medical/narratives?access_token=demo";
     ListView lv;
-    int offset=30;
     View view;
     List<String> lvArray = new ArrayList<String>();
 
@@ -57,7 +54,7 @@ public class MedicalcostOptimisationFragment extends Fragment implements OnRefre
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout
-        view = inflater.inflate(R.layout.medicalcostoptimisation, container, false);
+        view = inflater.inflate(R.layout.queryweb, container, false);
 
         // Now give the find the PullToRefreshLayout and set it up
         mPullToRefreshLayout = (PullToRefreshLayout) view.findViewById(R.id.ptr_layout);
@@ -145,14 +142,15 @@ public class MedicalcostOptimisationFragment extends Fragment implements OnRefre
                 arrayList=new ArrayList<String[]>();
                 //Log.d("asd", j + "");
                 JSONArray jsonArray= (JSONArray) j.get("data");
+                JSONObject jsonObject= (JSONObject) jsonArray.get(0);
+                jsonArray= (JSONArray) jsonObject.get("entries");
+                Log.d("asd",jsonArray.get(0)+"");
                 for (int  i=0;i<jsonArray.length();i++)
                 {
                     JSONObject jObj= (JSONObject) jsonArray.get(i);
-                    groupList.add(jObj.get("name").toString());
-                    String str[]=new String[3];
-                    str[0]="Source : "+jObj.get("source").toString();
-                    str[1]="Illness Date : "+jObj.get("createdAt").toString().substring(0,10);
-                    str[2]="Hospital Name : "+((JSONObject)jObj.get("organization")).get("name").toString();
+                    groupList.add(jObj.get("title").toString());
+                    String str[]=new String[1];
+                    str[0]=jObj.get("text").toString();
 
                     arrayList.add(i,str);
                 }

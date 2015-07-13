@@ -11,6 +11,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ExpandableListView;
 import android.widget.ListView;
 import android.widget.Toast;
@@ -35,7 +37,7 @@ import uk.co.senab.actionbarpulltorefresh.library.listeners.OnRefreshListener;
  * Time: 下午1:31
  * Mail: specialcyci@gmail.com
  */
-public class MedicalcostOptimisationFragment extends Fragment implements OnRefreshListener {
+public class DataPlanFragment extends Fragment implements OnRefreshListener {
     private PullToRefreshLayout mPullToRefreshLayout;
 
     List<String> groupList;
@@ -46,18 +48,21 @@ public class MedicalcostOptimisationFragment extends Fragment implements OnRefre
     ArrayList<String[]> arrayList;
     JSONArray jArray=new JSONArray();
     ArrayAdapter<String> arrayAdapter;
-    String LOGIN_URL = "https://api.humanapi.co/v1/human/medical/issues?access_token=demo";
+    String LOGIN_URL = "http://api.bluebuttonconnector.healthit.gov/stage2?state=TX&limit=30&offset=0";
     ListView lv;
     int offset=30;
+    int limit=0;
     View view;
     List<String> lvArray = new ArrayList<String>();
-
-
+    EditText etState;
+    Button bnGetProvider;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout
-        view = inflater.inflate(R.layout.medicalcostoptimisation, container, false);
+        view = inflater.inflate(R.layout.dataplan, container, false);
+        etState= (EditText) view.findViewById(R.id.etState);
+        bnGetProvider= (Button) view.findViewById(R.id.getHealth);
 
         // Now give the find the PullToRefreshLayout and set it up
         mPullToRefreshLayout = (PullToRefreshLayout) view.findViewById(R.id.ptr_layout);
@@ -65,7 +70,20 @@ public class MedicalcostOptimisationFragment extends Fragment implements OnRefre
                 .allChildrenArePullable()
                 .listener(this)
                 .setup(mPullToRefreshLayout);
-        new GetList().execute();
+        bnGetProvider.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(etState.getText().length()==2) {
+                    //Toast.makeText(getActivity(),etState.getText(),Toast.LENGTH_LONG).show();
+                    LOGIN_URL="http://api.bluebuttonconnector.healthit.gov/stage2?state="+etState.getText()+"&limit=30&offset=0";
+                    new GetList().execute();
+                }
+                else
+                    Toast.makeText(getActivity(),"Enter State in the Format xx ex:TX",Toast.LENGTH_LONG).show();
+            }
+        });
+
+
         //createGroupList();
 
         //createCollection();
@@ -120,6 +138,11 @@ public class MedicalcostOptimisationFragment extends Fragment implements OnRefre
 
         Toast.makeText(getActivity(), "Refreshing", Toast.LENGTH_SHORT).show();
 
+        LOGIN_URL = "http://api.bluebuttonconnector.healthit.gov/stage2?state="+etState.getText()+"&limit=30&offset="+offset;
+        //http://api.bluebuttonconnector.healthit.gov/stage2?state=TX&limit=30&offset=0
+        offset+=30;
+        if(offset>limit)
+            offset=0;
         new GetList().execute();
         mPullToRefreshLayout.setRefreshComplete();
     }
@@ -140,22 +163,30 @@ public class MedicalcostOptimisationFragment extends Fragment implements OnRefre
             try {
 
                 List<NameValuePair> params = new ArrayList<NameValuePair>();
+                Log.d("asd",LOGIN_URL);
                 JSONObject j=(JSONObject)new JSONArrayParser().getJsonObject(LOGIN_URL);
-                groupList = new ArrayList<String>();
-                arrayList=new ArrayList<String[]>();
-                //Log.d("asd", j + "");
-                JSONArray jsonArray= (JSONArray) j.get("data");
-                for (int  i=0;i<jsonArray.length();i++)
-                {
-                    JSONObject jObj= (JSONObject) jsonArray.get(i);
-                    groupList.add(jObj.get("name").toString());
-                    String str[]=new String[3];
-                    str[0]="Source : "+jObj.get("source").toString();
-                    str[1]="Illness Date : "+jObj.get("createdAt").toString().substring(0,10);
-                    str[2]="Hospital Name : "+((JSONObject)jObj.get("organization")).get("name").toString();
 
-                    arrayList.add(i,str);
-                }
+                    JSONArray results = (JSONArray) j.get("results");
+                    limit = Integer.parseInt(((JSONObject) j.get("meta")).get("total_results").toString()) - 30;
+                    groupList = new ArrayList<String>();
+                    arrayList = new ArrayList<String[]>();
+                    for (int i = 0; i < results.length(); i++) {
+                        JSONObject jObj = (JSONObject) results.get(i);
+                        // Log.d("asd",jObj+"");
+
+                        groupList.add(jObj.get("name").toString());
+
+                        String str[] = new String[7];
+                        str[0] = "State : " + jObj.get("state").toString();
+                        str[1] = "City : " + jObj.get("city").toString();
+                        str[2] = "Address : " + jObj.get("address").toString();
+                        str[3] = "Zip : " + jObj.get("zip").toString();
+                        str[4] = "Phone : " + jObj.get("phone").toString();
+                        str[5] = "Payment : " + jObj.get("payment").toString();
+                        str[6] = "NPI : " + jObj.get("npi").toString();
+
+                        arrayList.add(i, str);
+                    }
 
 
                 getActivity().runOnUiThread(new Runnable() {
