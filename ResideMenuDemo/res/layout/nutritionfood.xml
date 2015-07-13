@@ -1,16 +1,45 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:weightSum="1">
 
-    <TextView
+    <LinearLayout
+        android:layout_weight="0.1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Profile"
-        style="@style/fragment_text"
-        android:layout_gravity="center"
-        android:id="@+id/textView"/>
+        android:orientation="horizontal"
+        android:weightSum="1">
+        <EditText
+            android:layout_weight="0.5"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:paddingLeft="0dp"
+            android:id="@+id/etState"
+            android:text="Enter food Name"/>
+        <Button
+            android:layout_weight="0.5"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/getHealth"
+            android:text="Get Food Insight"/>
+    </LinearLayout>
+    <uk.co.senab.actionbarpulltorefresh.library.PullToRefreshLayout
+        android:id="@+id/ptr_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.9">
 
-</FrameLayout>
+        <!-- Your content, here we're using a ScrollView -->
+
+        <ExpandableListView
+            android:id="@+id/laptop_list"
+            android:layout_width="match_parent"
+            android:layout_height="fill_parent" >
+        </ExpandableListView>
+
+    </uk.co.senab.actionbarpulltorefresh.library.PullToRefreshLayout>
+
+</LinearLayout>
