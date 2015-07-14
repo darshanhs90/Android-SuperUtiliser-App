@@ -128,4 +128,14 @@
 
     <string name="amount">amount</string>
     <string name="description">description</string>
+    <string name="received">
+		<u>Received</u>
+	</string>
+	<string name="sent">
+		<u>Sent</u>
+	</string>
+    <string name="latest">Latest</string>
+    <string name="previous">Previous</string>
+    <string name="delta">Data Used</string>
+    <string name="device"><i>(device)</i></string>
 </resources>

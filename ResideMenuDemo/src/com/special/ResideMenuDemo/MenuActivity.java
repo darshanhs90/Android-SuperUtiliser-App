@@ -78,7 +78,7 @@ public class MenuActivity extends FragmentActivity implements View.OnClickListen
         itemCalendar     = new ResideMenuItem(this, R.drawable.icon_home,     "Calendar");//done
         itemAppointmentPhonenumber     = new ResideMenuItem(this, R.drawable.icon_home,     "Appointment Helper");//------------------
         itemMedicaid     = new ResideMenuItem(this, R.drawable.icon_home,     "MedicAid");//------------------
-        itemCentralReport     = new ResideMenuItem(this, R.drawable.icon_home,     "Data Usage Info");//http://stackoverflow.com/questions/24366016/how-to-get-programmatically-the-data-usage-limit-set-by-user-on-android-os-confi
+        itemCentralReport     = new ResideMenuItem(this, R.drawable.icon_home,     "SomeOther Thing");//
         itemReminder     = new ResideMenuItem(this, R.drawable.icon_home,     "Get Medication Info");//done
         itemNotes     = new ResideMenuItem(this, R.drawable.icon_home,     "Insurance Claims");//https://platform.pokitdok.com/#/--node
         itemHospitalList     = new ResideMenuItem(this, R.drawable.icon_home,     "Hospital List");//done
@@ -91,8 +91,8 @@ public class MenuActivity extends FragmentActivity implements View.OnClickListen
         itemHealthInsuranceClaims= new ResideMenuItem(this, R.drawable.icon_home,     "Test Results");//done
         itemgetFDAHelp= new ResideMenuItem(this, R.drawable.icon_home,     "Get Meals Info");//done
         itemQueryWeb= new ResideMenuItem(this, R.drawable.icon_home,     "Narratives");//done
-        itemIncomeTracker= new ResideMenuItem(this, R.drawable.icon_home,     "Income Tracker");//------------
-        itemBMITracker= new ResideMenuItem(this, R.drawable.icon_home,     "Data Usage");//--------------
+        itemIncomeTracker= new ResideMenuItem(this, R.drawable.icon_home,     "Income Tracker");//done
+        itemBMITracker= new ResideMenuItem(this, R.drawable.icon_home,     "Data Usage");//done
         itemGroceriesTracker= new ResideMenuItem(this, R.drawable.icon_home,     "Groceries Map");//done
         itemSmokingAndDrugTracker= new ResideMenuItem(this, R.drawable.icon_home,     "Habits Tracker");//done
         itemTraumaHelper= new ResideMenuItem(this, R.drawable.icon_home,     "Trauma Helper");//--------------

@@ -1,5 +1,6 @@
 package com.special.ResideMenuDemo;
 
+import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
@@ -9,6 +10,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
+
+import com.vinsol.expensetracker.Home;
 
 /**
  * User: special
@@ -20,7 +23,6 @@ public class BMITrackerFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        Toast.makeText(getActivity(), "BMITrackerFragment", Toast.LENGTH_SHORT).show();
         String DEBUG_TAG = "NetworkStatusExample";
         ConnectivityManager connMgr = (ConnectivityManager)
                 getActivity().getSystemService(getActivity().getApplicationContext().CONNECTIVITY_SERVICE);
@@ -28,8 +30,15 @@ public class BMITrackerFragment extends Fragment {
         boolean isWifiConn = networkInfo.isConnected();
         networkInfo = connMgr.getNetworkInfo(ConnectivityManager.TYPE_MOBILE);
         boolean isMobileConn = networkInfo.isConnected();
-        Log.d(DEBUG_TAG, "Wifi connected: " + isWifiConn);
-        Log.d(DEBUG_TAG, "Mobile connected: " + isMobileConn);
+
+        if(isMobileConn==true){
+            Toast.makeText(getActivity(), "Using Cellular Data", Toast.LENGTH_SHORT).show();
+        }
+        else{
+            Toast.makeText(getActivity(), "Using Wifi Data", Toast.LENGTH_SHORT).show();
+        }
+        Intent intent = new Intent(getActivity(), TrafficMonitorActivity.class);
+        startActivity(intent);
         return inflater.inflate(R.layout.bmitracker, container, false);
     }
 
