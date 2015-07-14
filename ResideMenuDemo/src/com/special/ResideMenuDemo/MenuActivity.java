@@ -82,7 +82,7 @@ public class MenuActivity extends FragmentActivity implements View.OnClickListen
         itemReminder     = new ResideMenuItem(this, R.drawable.icon_home,     "Get Medication Info");//done
         itemNotes     = new ResideMenuItem(this, R.drawable.icon_home,     "Insurance Claims");//https://platform.pokitdok.com/#/--node
         itemHospitalList     = new ResideMenuItem(this, R.drawable.icon_home,     "Hospital List");//done
-        itemGeneticInfoSaver     = new ResideMenuItem(this, R.drawable.icon_home,     "Save Genetic Info");//https://api.23andme.com/docs/reference/--node
+        itemGeneticInfoSaver     = new ResideMenuItem(this, R.drawable.icon_home,     "Change");//--------------
         itemCancerInfo     = new ResideMenuItem(this, R.drawable.icon_home,     "Get Cancer Info");//done
         itemNutritionFood     = new ResideMenuItem(this, R.drawable.icon_home,     "Food Insight");//done
         itemQandA     = new ResideMenuItem(this, R.drawable.icon_home,     "My Profile");//done
