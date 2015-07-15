@@ -27,7 +27,7 @@ public class CancerInfoFragment extends Fragment {
     View view;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        Toast.makeText(getActivity(), "CancerInfoFragment", Toast.LENGTH_SHORT).show();
+        Toast.makeText(getActivity(), "Cancer Info Loading.Wait until fully loaded", Toast.LENGTH_LONG).show();
         view=inflater.inflate(R.layout.cancerinfo, container, false);
         webview= (WebView) view.findViewById(R.id.wvCancerInfo);
         WebSettings settings = webview.getSettings();
@@ -36,7 +36,7 @@ public class CancerInfoFragment extends Fragment {
 
         final AlertDialog alertDialog = new AlertDialog.Builder(getActivity()).create();
 
-        progressBar = ProgressDialog.show(getActivity(), "WebView Example", "Loading...");
+        progressBar = ProgressDialog.show(getActivity(), "Cancer Info", "Loading...");
 
         webview.setWebViewClient(new WebViewClient() {
             public boolean shouldOverrideUrlLoading(WebView view, String url) {

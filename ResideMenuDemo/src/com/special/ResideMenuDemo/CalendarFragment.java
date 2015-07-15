@@ -20,7 +20,7 @@ public class CalendarFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        Toast.makeText(getActivity(), "CalendarFragment", Toast.LENGTH_SHORT).show();
+        Toast.makeText(getActivity(), "Calendar", Toast.LENGTH_SHORT).show();
         Calendar cal = Calendar.getInstance();
         Intent intent = new Intent(Intent.ACTION_EDIT);
         intent.setType("vnd.android.cursor.item/event");
@@ -29,7 +29,7 @@ public class CalendarFragment extends Fragment {
         intent.putExtra("rrule", "FREQ=YEARLY");
         intent.putExtra("endTime", cal.getTimeInMillis() + 60
                 * 60 * 1000);
-        intent.putExtra("title", "A Test Event from android app");
+        intent.putExtra("title", "A Test Event from Mary Helper Application");
         startActivity(intent);
         return inflater.inflate(R.layout.calendar, container, false);
     }

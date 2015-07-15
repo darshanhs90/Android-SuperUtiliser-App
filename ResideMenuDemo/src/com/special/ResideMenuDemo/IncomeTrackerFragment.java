@@ -20,7 +20,7 @@ public class IncomeTrackerFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        Toast.makeText(getActivity(), "IncomeTrackerFragment", Toast.LENGTH_SHORT).show();
+        Toast.makeText(getActivity(), "Income Tracker", Toast.LENGTH_SHORT).show();
         Intent intent = new Intent(getActivity(), Home.class);
         startActivity(intent);
         return inflater.inflate(R.layout.incometracker, container, false);

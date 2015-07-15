@@ -17,7 +17,6 @@ public class TraumaHelperFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        Toast.makeText(getActivity(), "TraumaHelperFragment", Toast.LENGTH_SHORT).show();
         return inflater.inflate(R.layout.traumahelper, container, false);
     }
 

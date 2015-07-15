@@ -27,7 +27,6 @@ public class GlucometerFragment extends Fragment {
     View view;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        Toast.makeText(getActivity(), "CancerInfoFragment", Toast.LENGTH_SHORT).show();
         view=inflater.inflate(R.layout.glucometer, container, false);
         webview= (WebView) view.findViewById(R.id.wvCancerInfo);
         WebSettings settings = webview.getSettings();

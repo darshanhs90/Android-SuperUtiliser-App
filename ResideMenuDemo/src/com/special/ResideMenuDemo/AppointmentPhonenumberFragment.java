@@ -19,7 +19,6 @@ public class AppointmentPhonenumberFragment extends Fragment {
 WebView webView;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        Toast.makeText(getActivity(),"AppointmentPhonenumberFragment",Toast.LENGTH_SHORT).show();
         View view=inflater.inflate(R.layout.appointmentphonenumber, container, false);
         webView= (WebView) view.findViewById(R.id.webview);
         webView.getSettings().setJavaScriptEnabled(true);

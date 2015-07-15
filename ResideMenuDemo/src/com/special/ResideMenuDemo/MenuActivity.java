@@ -95,7 +95,7 @@ public class MenuActivity extends FragmentActivity implements View.OnClickListen
         itemBMITracker= new ResideMenuItem(this, R.drawable.icon_home,     "Data Usage");//done
         itemGroceriesTracker= new ResideMenuItem(this, R.drawable.icon_home,     "Groceries Map");//done
         itemSmokingAndDrugTracker= new ResideMenuItem(this, R.drawable.icon_home,     "Habits Tracker");//done
-        itemTraumaHelper= new ResideMenuItem(this, R.drawable.icon_home,     "Trauma Helper");//--------------
+        itemTraumaHelper= new ResideMenuItem(this, R.drawable.icon_home,     "About Us");//done
         itemInsuranceProvider= new ResideMenuItem(this, R.drawable.icon_home,     "Insurance Provider Search");//done
         itemSpecialitiesSearch= new ResideMenuItem(this, R.drawable.icon_home,     "Specialities Search");//done
 
@@ -159,9 +159,9 @@ public class MenuActivity extends FragmentActivity implements View.OnClickListen
         resideMenu.addMenuItem(itemBMITracker, ResideMenu.DIRECTION_LEFT);
         resideMenu.addMenuItem(itemGroceriesTracker, ResideMenu.DIRECTION_RIGHT);
         resideMenu.addMenuItem(itemSmokingAndDrugTracker, ResideMenu.DIRECTION_LEFT);
-        resideMenu.addMenuItem(itemTraumaHelper, ResideMenu.DIRECTION_RIGHT);
-        resideMenu.addMenuItem(itemDataPlan, ResideMenu.DIRECTION_LEFT);
         resideMenu.addMenuItem(itemInsuranceProvider, ResideMenu.DIRECTION_RIGHT);
+        resideMenu.addMenuItem(itemDataPlan, ResideMenu.DIRECTION_LEFT);
+        resideMenu.addMenuItem(itemTraumaHelper, ResideMenu.DIRECTION_RIGHT);
         resideMenu.addMenuItem(itemSpecialitiesSearch, ResideMenu.DIRECTION_LEFT);
 
         // You can disable a direction by setting ->

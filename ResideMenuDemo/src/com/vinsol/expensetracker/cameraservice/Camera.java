@@ -5,14 +5,6 @@
 
 package com.vinsol.expensetracker.cameraservice;
 
-import java.io.Closeable;
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.OutputStream;
-import java.util.Collections;
-import java.util.List;
-
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.ContentProviderClient;
@@ -40,7 +32,6 @@ import android.os.StatFs;
 import android.preference.PreferenceManager;
 import android.provider.MediaStore;
 import android.provider.Settings;
-import android.util.AttributeSet;
 import android.view.Display;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
@@ -55,11 +46,19 @@ import android.view.WindowManager;
 import android.widget.Toast;
 
 import com.flurry.android.FlurryAgent;
+import com.special.ResideMenuDemo.R;
 import com.vinsol.expensetracker.Constants;
 import com.vinsol.expensetracker.ExpenseTrackerApplication;
-import com.special.ResideMenuDemo.R;
 import com.vinsol.expensetracker.helpers.SharedPreferencesHelper;
 import com.vinsol.expensetracker.utils.Log;
+
+import java.io.Closeable;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.OutputStream;
+import java.util.Collections;
+import java.util.List;
 
 public class Camera extends Activity implements View.OnClickListener, ShutterButton.OnShutterButtonListener, SurfaceHolder.Callback {
 
@@ -1316,30 +1315,5 @@ public class Camera extends Activity implements View.OnClickListener, ShutterBut
     }
 }
 
-class FocusRectangle extends View {
 
-    public FocusRectangle(Context context, AttributeSet attrs) {
-        super(context, attrs);
-    }
-
-    private void setDrawable(int resid) {
-        setBackgroundDrawable(getResources().getDrawable(resid));
-    }
-
-    public void showStart() {
-        setDrawable(R.drawable.focus_focusing);
-    }
-
-    public void showSuccess() {
-        setDrawable(R.drawable.focus_focused);
-    }
-
-    public void showFail() {
-        setDrawable(R.drawable.focus_focus_failed);
-    }
-
-    public void clear() {
-        setBackgroundDrawable(null);
-    }
-}
 
