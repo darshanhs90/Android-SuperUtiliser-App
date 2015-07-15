@@ -73,7 +73,7 @@ public class CentralReportFragment extends Fragment implements OnRefreshListener
         bnGetProvider.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (etState.getText().length() > 5) {
+                if (etState.getText().length() > 4) {
                     //Toast.makeText(getActivity(),etState.getText(),Toast.LENGTH_LONG).show();
                     //https://api.edamam.com/search?q=chicken&app_id=8e9d063b&app_key=8657a32df16db3063e61214978826997
                     LOGIN_URL = "https://api.betterdoctor.com/2015-01-27/doctors?query=" + etState.getText() + "&skip=0&limit=20&user_key=6f42bffd9790301ebe03ab1ec20d9b93";
@@ -164,171 +164,54 @@ public class CentralReportFragment extends Fragment implements OnRefreshListener
                 Log.d("asd",LOGIN_URL);
                 JSONObject j=(JSONObject)new JSONArrayParser().getJsonObject(LOGIN_URL);
 
-                JSONArray results = (JSONArray) j.get("hits");
+                JSONArray results = (JSONArray) j.get("data");
                 groupList = new ArrayList<String>();
                 arrayList = new ArrayList<String[]>();
                 for (int i = 0; i < results.length(); i++) {
                     JSONObject jObj = (JSONObject) results.get(i);
-                    // Log.d("asd",jObj+"");
-                    JSONObject recipe= (JSONObject) jObj.get("recipe");
-                    groupList.add(recipe.get("label").toString());
+                    String name=((JSONObject)jObj.get("profile")).get("first_name").toString()+" "+((JSONObject)jObj.get("profile")).get("last_name").toString();
+                    groupList.add(name);
+                    JSONArray practices= (JSONArray) jObj.get("practices");
+                    ArrayList<String> st=new ArrayList<String>();
+                    for (int k=0;k<practices.length();k++){
+                        JSONObject tempObj= (JSONObject) practices.get(k);
+                        st.add("Name : "+tempObj.get("name").toString());
+                        String city=((JSONObject)tempObj.get("visit_address")).get("city").toString();
+                        String state=((JSONObject)tempObj.get("visit_address")).get("state_long").toString();
+                        String street1=((JSONObject)tempObj.get("visit_address")).get("street").toString();
+                        String zip=((JSONObject)tempObj.get("visit_address")).get("zip").toString();
+                        st.add("Address : "+street1+","+city+","+state+","+zip);
+                        JSONArray phones= (JSONArray) tempObj.get("phones");
+                        for (int l=0;l<phones.length();l++){
+                            JSONObject phoneObj= (JSONObject) phones.get(l);
+                            st.add(phoneObj.get("type").toString().toUpperCase()+" : "+phoneObj.get("number").toString());
+                        }
+                       st.add("Language : " + ((JSONObject) ((JSONArray) tempObj.get("languages")).get(0)).get("name").toString());
+                    }
 
-                    String str[] = new String[34];
-                    str[0] = "Diet Labels : " + recipe.get("dietLabels").toString();
-                    str[1] = "Health Labels : " + recipe.get("healthLabels").toString();
-                    str[2] = "Ingredients : " + recipe.get("ingredients").toString();
-                    str[3] = "Calories : " + recipe.get("calories").toString();
-                    str[4] = "Total Weight : " + recipe.get("totalWeight").toString();
-                    JSONObject nutrients= (JSONObject) recipe.get("totalNutrients");
-
-                    if(nutrients.has("ENERC_KCAL"))
-                        str[5] = "Energy : " + ((JSONObject)nutrients.get("ENERC_KCAL")).get("quantity").toString()+((JSONObject)nutrients.get("ENERC_KCAL")).get("unit").toString();
-                    else
-                        str[5]="Energy : "+"NA";
-
-                    if(nutrients.has("FAT"))
-                        str[6] = ((JSONObject)nutrients.get("FAT")).get("label").toString()+" : " + ((JSONObject)nutrients.get("FAT")).get("quantity").toString()+((JSONObject)nutrients.get("FAT")).get("unit").toString();
-                    else
-                        str[6]="FAT : NA";
-
-                    if(nutrients.has("FASAT"))
-                        str[7] = ((JSONObject)nutrients.get("FASAT")).get("label").toString()+" : " + ((JSONObject)nutrients.get("FASAT")).get("quantity").toString()+((JSONObject)nutrients.get("FASAT")).get("unit").toString();
-                    else
-                        str[7]="Saturated : NA";
-
-                    if(nutrients.has("FATRN"))
-                        str[8] = ((JSONObject)nutrients.get("FATRN")).get("label").toString()+" : " + ((JSONObject)nutrients.get("FATRN")).get("quantity").toString()+((JSONObject)nutrients.get("FATRN")).get("unit").toString();
-                    else
-                        str[8]="Trans : NA";
-
-                    if(nutrients.has("FAMS"))
-                        str[9] = ((JSONObject)nutrients.get("FAMS")).get("label").toString()+" : " + ((JSONObject)nutrients.get("FAMS")).get("quantity").toString()+((JSONObject)nutrients.get("FAMS")).get("unit").toString();
-                    else
-                        str[9]="Monounsaturated : NA";
-
-                    if(nutrients.has("FAPU"))
-                        str[10] = ((JSONObject)nutrients.get("FAPU")).get("label").toString()+" : " + ((JSONObject)nutrients.get("FAPU")).get("quantity").toString()+((JSONObject)nutrients.get("FAPU")).get("unit").toString();
-                    else
-                        str[10]="Polyunsaturated : NA";
-
-                    if(nutrients.has("CHOCDF"))
-                        str[11] = ((JSONObject)nutrients.get("CHOCDF")).get("label").toString()+" : " + ((JSONObject)nutrients.get("CHOCDF")).get("quantity").toString()+((JSONObject)nutrients.get("CHOCDF")).get("unit").toString();
-                    else
-                        str[11]="Carbs : NA";
-
-                    if(nutrients.has("SUGAR"))
-                        str[12] = ((JSONObject)nutrients.get("SUGAR")).get("label").toString()+" : " + ((JSONObject)nutrients.get("SUGAR")).get("quantity").toString()+((JSONObject)nutrients.get("SUGAR")).get("unit").toString();
-                    else
-                        str[12]="Sugar : NA";
-
-                    if(nutrients.has("PROCNT"))
-                        str[13] = ((JSONObject)nutrients.get("PROCNT")).get("label").toString()+" : " + ((JSONObject)nutrients.get("PROCNT")).get("quantity").toString()+((JSONObject)nutrients.get("PROCNT")).get("unit").toString();
-                    else
-                        str[13]="Proteins : NA";
-
-                    if(nutrients.has("CHOLE"))
-                        str[14] = ((JSONObject)nutrients.get("CHOLE")).get("label").toString()+" : " + ((JSONObject)nutrients.get("CHOLE")).get("quantity").toString()+((JSONObject)nutrients.get("CHOLE")).get("unit").toString();
-                    else
-                        str[14]="Cholesterol : NA";
-
-                    if(nutrients.has("NA"))
-                        str[15] = ((JSONObject)nutrients.get("NA")).get("label").toString()+" : " + ((JSONObject)nutrients.get("NA")).get("quantity").toString()+((JSONObject)nutrients.get("NA")).get("unit").toString();
-                    else
-                        str[15]="Sodium : NA";
-
-                    if(nutrients.has("K"))
-                        str[16] = ((JSONObject)nutrients.get("K")).get("label").toString()+" : " + ((JSONObject)nutrients.get("K")).get("quantity").toString()+((JSONObject)nutrients.get("K")).get("unit").toString();
-                    else
-                        str[16]="Potassium : NA";
-
-                    if(nutrients.has("CA"))
-                        str[17] = ((JSONObject)nutrients.get("CA")).get("label").toString()+" : " + ((JSONObject)nutrients.get("CA")).get("quantity").toString()+((JSONObject)nutrients.get("CA")).get("unit").toString();
-                    else
-                        str[17]="Calcium : NA";
-
-                    if(nutrients.has("MG"))
-                        str[18] = ((JSONObject)nutrients.get("MG")).get("label").toString()+" : " + ((JSONObject)nutrients.get("MG")).get("quantity").toString()+((JSONObject)nutrients.get("MG")).get("unit").toString();
-                    else
-                        str[18]="Magnesium : NA";
-
-                    if(nutrients.has("FE"))
-                        str[19] = ((JSONObject)nutrients.get("FE")).get("label").toString()+" : " + ((JSONObject)nutrients.get("FE")).get("quantity").toString()+((JSONObject)nutrients.get("FE")).get("unit").toString();
-                    else
-                        str[19]="Iron : NA";
-
-                    if(nutrients.has("ZN"))
-                        str[20] = ((JSONObject)nutrients.get("ZN")).get("label").toString()+" : " + ((JSONObject)nutrients.get("ZN")).get("quantity").toString()+((JSONObject)nutrients.get("ZN")).get("unit").toString();
-                    else
-                        str[20]="Zinc :NA";
-
-                    if(nutrients.has("P"))
-                        str[21] = ((JSONObject)nutrients.get("P")).get("label").toString()+" : " + ((JSONObject)nutrients.get("P")).get("quantity").toString()+((JSONObject)nutrients.get("P")).get("unit").toString();
-                    else
-                        str[21]="Potassium : NA";
-
-                    if(nutrients.has("VITA_RAE"))
-                        str[22] = ((JSONObject)nutrients.get("VITA_RAE")).get("label").toString()+" : " + ((JSONObject)nutrients.get("VITA_RAE")).get("quantity").toString()+((JSONObject)nutrients.get("VITA_RAE")).get("unit").toString();
-                    else
-                        str[22]="Vitamin A : NA";
-
-                    if(nutrients.has("VITC"))
-                        str[23] = ((JSONObject)nutrients.get("VITC")).get("label").toString()+" : " + ((JSONObject)nutrients.get("VITC")).get("quantity").toString()+((JSONObject)nutrients.get("VITC")).get("unit").toString();
-                    else
-                        str[23]="Vitamin C : NA";
-
-                    if(nutrients.has("THIA"))
-                        str[24] = ((JSONObject)nutrients.get("THIA")).get("label").toString()+" : " + ((JSONObject)nutrients.get("THIA")).get("quantity").toString()+((JSONObject)nutrients.get("THIA")).get("unit").toString();
-                    else
-                        str[24]="Thiamin (B1) : NA";
-
-                    if(nutrients.has("RIBF"))
-                        str[25] = ((JSONObject)nutrients.get("RIBF")).get("label").toString()+" : " + ((JSONObject)nutrients.get("RIBF")).get("quantity").toString()+((JSONObject)nutrients.get("RIBF")).get("unit").toString();
-                    else
-                        str[25]="Riboflavin (B2) : NA";
-
-                    if(nutrients.has("NIA"))
-                        str[26] = ((JSONObject)nutrients.get("NIA")).get("label").toString()+" : " + ((JSONObject)nutrients.get("NIA")).get("quantity").toString()+((JSONObject)nutrients.get("NIA")).get("unit").toString();
-                    else
-                        str[26]="Niacin (B3) : NA";
-
-                    if(nutrients.has("VITB6A"))
-                        str[27] = ((JSONObject)nutrients.get("VITB6A")).get("label").toString()+" : " + ((JSONObject)nutrients.get("VITB6A")).get("quantity").toString()+((JSONObject)nutrients.get("VITB6A")).get("unit").toString();
-                    else
-                        str[27] ="Vitamin B6 : NA";
-
-                    if(nutrients.has("FOL"))
-                        str[28] = ((JSONObject)nutrients.get("FOL")).get("label").toString()+" : " + ((JSONObject)nutrients.get("FOL")).get("quantity").toString()+((JSONObject)nutrients.get("FOL")).get("unit").toString();
-                    else
-                        str[28]="Folic Acid (B9) : NA";
-
-
-
-                    if(nutrients.has("VITB12"))
-                        str[29] = ((JSONObject)nutrients.get("VITB12")).get("label").toString()+" : " + ((JSONObject)nutrients.get("VITB12")).get("quantity").toString()+((JSONObject)nutrients.get("VITB12")).get("unit").toString();
-                    else
-                        str[29]="Vitamin B12 : NA";
-
-                    if(nutrients.has("VITD"))
-                        str[30] = ((JSONObject)nutrients.get("VITD")).get("label").toString()+" : " + ((JSONObject)nutrients.get("VITD")).get("quantity").toString()+((JSONObject)nutrients.get("VITD")).get("unit").toString();
-                    else
-                        str[30]="Vitamin D : NA";
-
-                    if(nutrients.has("TOCPHA"))
-                        str[31] = ((JSONObject)nutrients.get("TOCPHA")).get("label").toString()+" : " + ((JSONObject)nutrients.get("TOCPHA")).get("quantity").toString()+((JSONObject)nutrients.get("TOCPHA")).get("unit").toString();
-                    else
-                        str[31] ="Vitamin E : NA";
-
-                    if(nutrients.has("VITK1"))
-                        str[32] = ((JSONObject)nutrients.get("VITK1")).get("label").toString()+" : " + ((JSONObject)nutrients.get("VITK1")).get("quantity").toString()+((JSONObject)nutrients.get("VITK1")).get("unit").toString();
-                    else
-                        str[32] ="Vitamin K : NA";
-
-                    if(nutrients.has("FIBTG"))
-                        str[33] = ((JSONObject)nutrients.get("FIBTG")).get("label").toString()+" : " + ((JSONObject)nutrients.get("FIBTG")).get("quantity").toString()+((JSONObject)nutrients.get("FIBTG")).get("unit").toString();
-                    else
-                        str[33] ="Fiber : NA";
-
-
+                    st.add("Slug : " + ((JSONObject) jObj.get("profile")).get("slug").toString());
+                    st.add("Title : " + ((JSONObject) jObj.get("profile")).get("title").toString());
+                    st.add("Image URL : " + ((JSONObject) jObj.get("profile")).get("image_url").toString());
+                    st.add("Gender : " + ((JSONObject) jObj.get("profile")).get("gender").toString());
+                    JSONArray ratings= (JSONArray) jObj.get("ratings");
+                    if(ratings.length()>0) {
+                        JSONObject rating = (JSONObject) ratings.get(0);
+                        st.add("Rating : " + rating.get("rating").toString());
+                        st.add("Provider : " + rating.get("provider").toString());
+                        st.add("Provider URL : " + rating.get("provider_url").toString());
+                    }
+                    JSONArray specialties= (JSONArray) jObj.get("specialties");
+                    if(specialties.length()>0) {
+                        JSONObject speciality = (JSONObject) specialties.get(0);
+                        st.add("Speciality : " + speciality.get("name").toString());
+                        st.add("Description : " + speciality.get("description").toString());
+                        st.add("Category : " + speciality.get("category").toString());
+                    }
+                    String str[]=new String[st.size()];
+                    for(int m=0;m<st.size();m++)
+                    {
+                        str[m]=st.get(m).toString();
+                    }
                     arrayList.add(i, str);
                 }
 
