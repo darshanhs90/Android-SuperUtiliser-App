@@ -68,36 +68,36 @@ public class MenuActivity extends FragmentActivity implements View.OnClickListen
         resideMenu.setScaleValue(0.7f);
 
         // create menu items;
-        itemHome     = new ResideMenuItem(this, R.drawable.icon_home,     "Home");//done
-        itemOfflineHelp     = new ResideMenuItem(this, R.drawable.icon_home,     "Health Summary");//done
-        itemDataPlan     = new ResideMenuItem(this, R.drawable.icon_home,     "Health Care Providers");//done
-        itemPillTracker     = new ResideMenuItem(this, R.drawable.icon_home,     "Pill Tracker");//done
-        itemPillIdentifier     = new ResideMenuItem(this, R.drawable.icon_home,     "Get Exercise Info");//done
-        itemGlucometer     = new ResideMenuItem(this, R.drawable.icon_home,     "Glucometer Help");//done
-        itemInsulinHelper     = new ResideMenuItem(this, R.drawable.icon_home,     "Ask A Doctor");//done
-        itemCalendar     = new ResideMenuItem(this, R.drawable.icon_home,     "Calendar");//done
-        itemAppointmentPhonenumber     = new ResideMenuItem(this, R.drawable.icon_home,     "Lawyer Help");//done
-        itemMedicaid     = new ResideMenuItem(this, R.drawable.icon_home,     "Get Doctor Tips");//done
-        itemCentralReport     = new ResideMenuItem(this, R.drawable.icon_home,     "Doctor Search");//done
-        itemReminder     = new ResideMenuItem(this, R.drawable.icon_home,     "Get Medication Info");//done
-        itemNotes     = new ResideMenuItem(this, R.drawable.icon_home,     "Insurance Plans and Info");//done
-        itemHospitalList     = new ResideMenuItem(this, R.drawable.icon_home,     "Hospital List");//done
-        itemGeneticInfoSaver     = new ResideMenuItem(this, R.drawable.icon_home,     "Doctors Directory");//done
-        itemCancerInfo     = new ResideMenuItem(this, R.drawable.icon_home,     "Get Cancer Info");//done
-        itemNutritionFood     = new ResideMenuItem(this, R.drawable.icon_home,     "Food Insight");//done
-        itemQandA     = new ResideMenuItem(this, R.drawable.icon_home,     "My Profile");//done
-        itemMedicalcostOptimisation     = new ResideMenuItem(this, R.drawable.icon_home,     "Medical Issues");//done
-        itemDrugInfo= new ResideMenuItem(this, R.drawable.icon_home,     "Allergies");//done
-        itemHealthInsuranceClaims= new ResideMenuItem(this, R.drawable.icon_home,     "Test Results");//done
-        itemgetFDAHelp= new ResideMenuItem(this, R.drawable.icon_home,     "Get Meals Info");//done
-        itemQueryWeb= new ResideMenuItem(this, R.drawable.icon_home,     "Narratives");//done
-        itemIncomeTracker= new ResideMenuItem(this, R.drawable.icon_home,     "Income Tracker");//done
-        itemBMITracker= new ResideMenuItem(this, R.drawable.icon_home,     "Data Usage");//done
-        itemGroceriesTracker= new ResideMenuItem(this, R.drawable.icon_home,     "Groceries Map");//done
-        itemSmokingAndDrugTracker= new ResideMenuItem(this, R.drawable.icon_home,     "Habits Tracker");//done
-        itemTraumaHelper= new ResideMenuItem(this, R.drawable.icon_home,     "About Us");//done
-        itemInsuranceProvider= new ResideMenuItem(this, R.drawable.icon_home,     "Insurance Provider Search");//done
-        itemSpecialitiesSearch= new ResideMenuItem(this, R.drawable.icon_home,     "Specialities Search");//done
+        itemHome     = new ResideMenuItem(this, R.drawable.ic_launcher,     "Home");//done
+        itemOfflineHelp     = new ResideMenuItem(this, R.drawable.healthsummary,     "Health Summary");//done
+        itemDataPlan     = new ResideMenuItem(this, R.drawable.healthcare,     "Health Care Providers");//done
+        itemPillTracker     = new ResideMenuItem(this, R.drawable.pilltracker,     "Pill Tracker");//done
+        itemPillIdentifier     = new ResideMenuItem(this, R.drawable.exerciseinfo,     "Get Exercise Info");//done
+        itemGlucometer     = new ResideMenuItem(this, R.drawable.glucometer,     "Glucometer Help");//done
+        itemInsulinHelper     = new ResideMenuItem(this, R.drawable.askdoctor,     "Ask A Doctor");//done
+        itemCalendar     = new ResideMenuItem(this, R.drawable.icon_calendar,     "Calendar");//done
+        itemAppointmentPhonenumber     = new ResideMenuItem(this, R.drawable.lawyer,     "Lawyer Help");//done
+        itemMedicaid     = new ResideMenuItem(this, R.drawable.doctortips,     "Get Doctor Tips");//done
+        itemCentralReport     = new ResideMenuItem(this, R.drawable.doctorsearch,     "Doctor Search");//done
+        itemReminder     = new ResideMenuItem(this, R.drawable.medicationinfo,     "Get Medication Info");//done
+        itemNotes     = new ResideMenuItem(this, R.drawable.insurance,     "Insurance Plans and Info");//done
+        itemHospitalList     = new ResideMenuItem(this, R.drawable.hospitallist,     "Hospital List");//done
+        itemGeneticInfoSaver     = new ResideMenuItem(this, R.drawable.directory,     "Doctors Directory");//done
+        itemCancerInfo     = new ResideMenuItem(this, R.drawable.cancerinfo,     "Get Cancer Info");//done
+        itemNutritionFood     = new ResideMenuItem(this, R.drawable.foodinsight,     "Food Insight");//done
+        itemQandA     = new ResideMenuItem(this, R.drawable.myprofile,     "My Profile");//done
+        itemMedicalcostOptimisation     = new ResideMenuItem(this, R.drawable.medicalissues,     "Medical Issues");//done
+        itemDrugInfo= new ResideMenuItem(this, R.drawable.allergies,     "Allergies");//done
+        itemHealthInsuranceClaims= new ResideMenuItem(this, R.drawable.results,     "Test Results");//done
+        itemgetFDAHelp= new ResideMenuItem(this, R.drawable.mealsinfo,     "Get Meals Info");//done
+        itemQueryWeb= new ResideMenuItem(this, R.drawable.reason,     "Narratives");//done
+        itemIncomeTracker= new ResideMenuItem(this, R.drawable.incometracker,     "Income Tracker");//done
+        itemBMITracker= new ResideMenuItem(this, R.drawable.datausage,     "Data Usage");//done
+        itemGroceriesTracker= new ResideMenuItem(this, R.drawable.groceriesmap,     "Groceries Map");//done
+        itemSmokingAndDrugTracker= new ResideMenuItem(this, R.drawable.habitstracker,     "Habits Tracker");//done
+        itemTraumaHelper= new ResideMenuItem(this, R.drawable.aboutus,     "About Us");//done
+        itemInsuranceProvider= new ResideMenuItem(this, R.drawable.insuranceprovidersearch,     "Insurance Provider Search");//done
+        itemSpecialitiesSearch= new ResideMenuItem(this, R.drawable.specialities,     "Specialities Search");//done
 
 
 

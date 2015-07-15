@@ -36,6 +36,7 @@ public class TrafficMonitorActivity extends Activity {
 	SharedPreferences pref;
 	SharedPreferences.Editor editor;
 	Float longVal,longVal1;
+	Long latestDownload,latestUpload;
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -50,12 +51,21 @@ public class TrafficMonitorActivity extends Activity {
 		delta_tx=(TextView) findViewById(R.id.delta_tx);
 		totalUsage=(TextView)findViewById(R.id.totalUsage);
 		totalUsage1=(TextView)findViewById(R.id.totalUsage1);
+		latestDownload=pref.getLong("latestDownload",0);
+		latestUpload=pref.getLong("latestUpload",0);
+		takeSnapshot(null);
 		longVal=pref.getFloat("totalDownload", 0.0f);
+		if(longVal>0){
+			Log.d("Asd","in long val");
+			longVal=(longVal*10000)+latestDownload-latest.device.rx;
+		}
 		totalUsage.setText(longVal/10000+"MB");
 		longVal1=pref.getFloat("totalUpload", 0.0f);
-		totalUsage1.setText(longVal1/10000+"MB");
+		if(longVal1>0){
+			longVal1=(longVal*10000)+latestUpload-latest.device.tx;
+		}
+		totalUsage1.setText(longVal1 / 10000 + "MB");
 
-		takeSnapshot(null);
 	}
 	public void reset(View v){
 		longVal=0.0f;
@@ -141,17 +151,22 @@ public class TrafficMonitorActivity extends Activity {
 		super.onPause();
 		editor.putFloat("totalDownload", longVal);
 		editor.putFloat("totalupload", longVal1);
-
+		editor.putLong("latestDownload", latest.device.rx);
+		editor.putLong("latestUpload", latest.device.tx);
 		editor.commit();
 	}
 
 	@Override
 	protected void onResume() {
 		super.onResume();
+
 		longVal=pref.getFloat("totalDownload",0);
 		totalUsage.setText(longVal / 10000 + "MB");
 		longVal1=pref.getFloat("totalupload",0);
-		totalUsage1.setText(longVal1/10000 + "MB");
+		totalUsage1.setText(longVal1 / 10000 + "MB");
+		latestDownload=pref.getLong("latestDownload", 0);
+		latestUpload=pref.getLong("latestUpload", 0);
+
 	}
 
 	@Override
@@ -159,6 +174,8 @@ public class TrafficMonitorActivity extends Activity {
 		super.onDestroy();
 		editor.putFloat("totalDownload", longVal);
 		editor.putFloat("totalUpload", longVal1);
+		editor.putLong("latestDownload", latest.device.rx);
+		editor.putLong("latestUpload", latest.device.tx);
 		editor.commit();
 	}
 
@@ -169,6 +186,8 @@ public class TrafficMonitorActivity extends Activity {
 		totalUsage.setText(longVal / 10000 + "MB");
 		longVal1=pref.getFloat("totalUpload", 0);
 		totalUsage1.setText(longVal1 / 10000 + "MB");
+		latestDownload=pref.getLong("latestDownload",0);
+		latestUpload=pref.getLong("latestUpload",0);
 	}
 
 	@Override
@@ -176,6 +195,8 @@ public class TrafficMonitorActivity extends Activity {
 		super.onStop();
 		editor.putFloat("totalDownload", longVal);
 		editor.putFloat("totalUpload", longVal1);
+		editor.putLong("latestDownload", latest.device.rx);
+		editor.putLong("latestUpload", latest.device.tx);
 		editor.commit();
 	}
 }

@@ -10,10 +10,7 @@ import android.widget.Button;
 import android.widget.Toast;
 
 /**
- * User: special
- * Date: 13-12-22
- * Time: 下午1:31
- * Mail: specialcyci@gmail.com
+ * Mail: hsdars@gmail.com
  */
 public class MedicaidFragment extends Fragment {
     WebView webView;

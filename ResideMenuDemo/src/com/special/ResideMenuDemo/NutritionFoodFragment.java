@@ -32,10 +32,7 @@ import uk.co.senab.actionbarpulltorefresh.library.PullToRefreshLayout;
 import uk.co.senab.actionbarpulltorefresh.library.listeners.OnRefreshListener;
 
 /**
- * User: special
- * Date: 13-12-22
- * Time: 下午1:31
- * Mail: specialcyci@gmail.com
+ * Mail: hsdars@gmail.com
  */
 public class NutritionFoodFragment extends Fragment implements OnRefreshListener {
     private PullToRefreshLayout mPullToRefreshLayout;
@@ -63,7 +60,7 @@ public class NutritionFoodFragment extends Fragment implements OnRefreshListener
         view = inflater.inflate(R.layout.nutritionfood, container, false);
         etState= (EditText) view.findViewById(R.id.etState);
         bnGetProvider= (Button) view.findViewById(R.id.getHealth);
-
+        Toast.makeText(getActivity(), "Pull down to refresh the list", Toast.LENGTH_LONG).show();
         // Now give the find the PullToRefreshLayout and set it up
         mPullToRefreshLayout = (PullToRefreshLayout) view.findViewById(R.id.ptr_layout);
         ActionBarPullToRefresh.from(getActivity())

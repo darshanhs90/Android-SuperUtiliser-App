@@ -11,10 +11,7 @@ import android.widget.Toast;
 import java.util.Calendar;
 
 /**
- * User: special
- * Date: 13-12-22
- * Time: 下午1:31
- * Mail: specialcyci@gmail.com
+ * Mail: hsdars@gmail.com
  */
 public class CalendarFragment extends Fragment {
 

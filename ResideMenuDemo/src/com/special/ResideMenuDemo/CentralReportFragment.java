@@ -32,10 +32,7 @@ import uk.co.senab.actionbarpulltorefresh.library.PullToRefreshLayout;
 import uk.co.senab.actionbarpulltorefresh.library.listeners.OnRefreshListener;
 
 /**
- * User: special
- * Date: 13-12-22
- * Time: 下午1:31
- * Mail: specialcyci@gmail.com
+ * Mail: hsdars@gmail.com
  */
 public class CentralReportFragment extends Fragment implements OnRefreshListener {
     private PullToRefreshLayout mPullToRefreshLayout;
@@ -60,6 +57,8 @@ public class CentralReportFragment extends Fragment implements OnRefreshListener
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout
+        Toast.makeText(getActivity(), "Pull down to refresh the list", Toast.LENGTH_LONG).show();
+
         view = inflater.inflate(R.layout.centralreport, container, false);
         etState= (EditText) view.findViewById(R.id.etState);
         bnGetProvider= (Button) view.findViewById(R.id.getHealth);

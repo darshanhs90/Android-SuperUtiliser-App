@@ -30,10 +30,7 @@ import uk.co.senab.actionbarpulltorefresh.library.PullToRefreshLayout;
 import uk.co.senab.actionbarpulltorefresh.library.listeners.OnRefreshListener;
 
 /**
- * User: special
- * Date: 13-12-22
- * Time: 下午1:31
- * Mail: specialcyci@gmail.com
+ * Mail: hsdars@gmail.com
  */
 public class SpecialitiesSearchFragment extends Fragment implements OnRefreshListener {
     private PullToRefreshLayout mPullToRefreshLayout;
@@ -58,7 +55,7 @@ public class SpecialitiesSearchFragment extends Fragment implements OnRefreshLis
                              Bundle savedInstanceState) {
         // Inflate the layout
         view = inflater.inflate(R.layout.specialitiessearch, container, false);
-
+        Toast.makeText(getActivity(), "Pull down to refresh the list", Toast.LENGTH_LONG).show();
         // Now give the find the PullToRefreshLayout and set it up
         mPullToRefreshLayout = (PullToRefreshLayout) view.findViewById(R.id.ptr_layout);
         ActionBarPullToRefresh.from(getActivity())

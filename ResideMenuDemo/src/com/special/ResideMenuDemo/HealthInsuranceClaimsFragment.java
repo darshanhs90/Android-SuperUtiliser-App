@@ -58,7 +58,7 @@ public class HealthInsuranceClaimsFragment extends Fragment implements OnRefresh
                              Bundle savedInstanceState) {
         // Inflate the layout
         view = inflater.inflate(R.layout.medicalcostoptimisation, container, false);
-
+        Toast.makeText(getActivity(), "Pull down to refresh the list", Toast.LENGTH_LONG).show();
         // Now give the find the PullToRefreshLayout and set it up
         mPullToRefreshLayout = (PullToRefreshLayout) view.findViewById(R.id.ptr_layout);
         ActionBarPullToRefresh.from(getActivity())
