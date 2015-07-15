@@ -35,7 +35,7 @@ import uk.co.senab.actionbarpulltorefresh.library.listeners.OnRefreshListener;
  * Time: 下午1:31
  * Mail: specialcyci@gmail.com
  */
-public class NotesFragment extends Fragment implements OnRefreshListener {
+public class SpecialitiesSearchFragment extends Fragment implements OnRefreshListener {
     private PullToRefreshLayout mPullToRefreshLayout;
 
     List<String> groupList;
@@ -46,8 +46,9 @@ public class NotesFragment extends Fragment implements OnRefreshListener {
     ArrayList<String[]> arrayList;
     JSONArray jArray=new JSONArray();
     ArrayAdapter<String> arrayAdapter;
-    String LOGIN_URL = "https://www.healthcare.gov/api/index.json";
+    String LOGIN_URL = "https://api.betterdoctor.com/2015-01-27/specialties?skip=0&limit=20&user_key=6f42bffd9790301ebe03ab1ec20d9b93";
     ListView lv;
+    int offset=20;
     View view;
     List<String> lvArray = new ArrayList<String>();
 
@@ -56,7 +57,7 @@ public class NotesFragment extends Fragment implements OnRefreshListener {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout
-        view = inflater.inflate(R.layout.notes, container, false);
+        view = inflater.inflate(R.layout.specialitiessearch, container, false);
 
         // Now give the find the PullToRefreshLayout and set it up
         mPullToRefreshLayout = (PullToRefreshLayout) view.findViewById(R.id.ptr_layout);
@@ -118,7 +119,10 @@ public class NotesFragment extends Fragment implements OnRefreshListener {
     public void onRefreshStarted(View view) {
 
         Toast.makeText(getActivity(), "Refreshing", Toast.LENGTH_SHORT).show();
-
+        offset+=20;
+        if(offset>360)
+            offset=0;
+        LOGIN_URL = "https://api.betterdoctor.com/2015-01-27/specialties?skip="+offset+"&limit=20&user_key=6f42bffd9790301ebe03ab1ec20d9b93";
         new GetList().execute();
         mPullToRefreshLayout.setRefreshComplete();
     }
@@ -144,13 +148,15 @@ public class NotesFragment extends Fragment implements OnRefreshListener {
                 arrayList=new ArrayList<String[]>();
                 //Log.d("asd", j + "");
                 JSONArray jsonArray= (JSONArray) j.get("data");
-                for (int  i=0;i<jsonArray.length()-1;i++)
+                for (int  i=0;i<jsonArray.length();i++)
                 {
                     JSONObject jObj= (JSONObject) jsonArray.get(i);
-                    groupList.add(jObj.get("title").toString());
-                    String str[]=new String[1];
-                    str[0]="Information : "+jObj.get("bite").toString();
-                    arrayList.add(i,str);
+                    groupList.add(jObj.get("name").toString());
+                    String str[]=new String[3];
+                    str[0]="Description :"+jObj.get("description").toString();
+                    str[1]="Category :"+jObj.get("category").toString();
+                    str[2]="Practitioner :"+jObj.get("actor").toString();
+                    arrayList.add(i, str);
                 }
 
 

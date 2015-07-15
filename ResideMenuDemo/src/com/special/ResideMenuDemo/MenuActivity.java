@@ -41,7 +41,7 @@ public class MenuActivity extends FragmentActivity implements View.OnClickListen
     private ResideMenuItem        itemBMITracker;
     private ResideMenuItem        itemGroceriesTracker;
     private ResideMenuItem        itemSmokingAndDrugTracker;
-    private ResideMenuItem         itemTraumaHelper;
+    private ResideMenuItem         itemTraumaHelper,itemInsuranceProvider,itemSpecialitiesSearch;
 
 
     /**
@@ -76,11 +76,11 @@ public class MenuActivity extends FragmentActivity implements View.OnClickListen
         itemGlucometer     = new ResideMenuItem(this, R.drawable.icon_home,     "Glucometer Help");//done
         itemInsulinHelper     = new ResideMenuItem(this, R.drawable.icon_home,     "Ask A Doctor");//done
         itemCalendar     = new ResideMenuItem(this, R.drawable.icon_home,     "Calendar");//done
-        itemAppointmentPhonenumber     = new ResideMenuItem(this, R.drawable.icon_home,     "Appointment Helper");//------------------
+        itemAppointmentPhonenumber     = new ResideMenuItem(this, R.drawable.icon_home,     "Lawyer Help");//done
         itemMedicaid     = new ResideMenuItem(this, R.drawable.icon_home,     "Get Doctor Tips");//done
-        itemCentralReport     = new ResideMenuItem(this, R.drawable.icon_home,     "SomeOther Thing");//
+        itemCentralReport     = new ResideMenuItem(this, R.drawable.icon_home,     "Doctor Search");//------------
         itemReminder     = new ResideMenuItem(this, R.drawable.icon_home,     "Get Medication Info");//done
-        itemNotes     = new ResideMenuItem(this, R.drawable.icon_home,     "Insurance Claims");//https://platform.pokitdok.com/#/--node
+        itemNotes     = new ResideMenuItem(this, R.drawable.icon_home,     "Insurance Plans and Info");//done
         itemHospitalList     = new ResideMenuItem(this, R.drawable.icon_home,     "Hospital List");//done
         itemGeneticInfoSaver     = new ResideMenuItem(this, R.drawable.icon_home,     "Doctors Directory");//done
         itemCancerInfo     = new ResideMenuItem(this, R.drawable.icon_home,     "Get Cancer Info");//done
@@ -96,6 +96,8 @@ public class MenuActivity extends FragmentActivity implements View.OnClickListen
         itemGroceriesTracker= new ResideMenuItem(this, R.drawable.icon_home,     "Groceries Map");//done
         itemSmokingAndDrugTracker= new ResideMenuItem(this, R.drawable.icon_home,     "Habits Tracker");//done
         itemTraumaHelper= new ResideMenuItem(this, R.drawable.icon_home,     "Trauma Helper");//--------------
+        itemInsuranceProvider= new ResideMenuItem(this, R.drawable.icon_home,     "Insurance Provider Search");//done
+        itemSpecialitiesSearch= new ResideMenuItem(this, R.drawable.icon_home,     "Specialities Search");//done
 
 
 
@@ -128,7 +130,8 @@ public class MenuActivity extends FragmentActivity implements View.OnClickListen
         itemSmokingAndDrugTracker.setOnClickListener(this);
         itemTraumaHelper.setOnClickListener(this);
         itemDataPlan.setOnClickListener(this);
-
+        itemInsuranceProvider.setOnClickListener(this);
+        itemSpecialitiesSearch.setOnClickListener(this);
 
         resideMenu.addMenuItem(itemHome, ResideMenu.DIRECTION_LEFT);
         resideMenu.addMenuItem(itemOfflineHelp, ResideMenu.DIRECTION_LEFT);
@@ -158,6 +161,9 @@ public class MenuActivity extends FragmentActivity implements View.OnClickListen
         resideMenu.addMenuItem(itemSmokingAndDrugTracker, ResideMenu.DIRECTION_LEFT);
         resideMenu.addMenuItem(itemTraumaHelper, ResideMenu.DIRECTION_RIGHT);
         resideMenu.addMenuItem(itemDataPlan, ResideMenu.DIRECTION_LEFT);
+        resideMenu.addMenuItem(itemInsuranceProvider, ResideMenu.DIRECTION_RIGHT);
+        resideMenu.addMenuItem(itemSpecialitiesSearch, ResideMenu.DIRECTION_LEFT);
+
         // You can disable a direction by setting ->
         // resideMenu.setSwipeDirectionDisable(ResideMenu.DIRECTION_RIGHT);
 
@@ -240,6 +246,10 @@ public class MenuActivity extends FragmentActivity implements View.OnClickListen
             changeFragment(new TraumaHelperFragment());
         }else if(view ==itemDataPlan){
             changeFragment(new DataPlanFragment());
+        }else if(view ==itemInsuranceProvider){
+            changeFragment(new InsuranceProviderFragment());
+        }else if(view ==itemSpecialitiesSearch){
+            changeFragment(new SpecialitiesSearchFragment());
         }
         resideMenu.closeMenu();
     }
