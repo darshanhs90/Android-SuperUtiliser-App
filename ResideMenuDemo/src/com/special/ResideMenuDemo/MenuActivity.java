@@ -78,7 +78,7 @@ public class MenuActivity extends FragmentActivity implements View.OnClickListen
         itemCalendar     = new ResideMenuItem(this, R.drawable.icon_home,     "Calendar");//done
         itemAppointmentPhonenumber     = new ResideMenuItem(this, R.drawable.icon_home,     "Lawyer Help");//done
         itemMedicaid     = new ResideMenuItem(this, R.drawable.icon_home,     "Get Doctor Tips");//done
-        itemCentralReport     = new ResideMenuItem(this, R.drawable.icon_home,     "Doctor Search");//------------
+        itemCentralReport     = new ResideMenuItem(this, R.drawable.icon_home,     "Doctor Search");//done
         itemReminder     = new ResideMenuItem(this, R.drawable.icon_home,     "Get Medication Info");//done
         itemNotes     = new ResideMenuItem(this, R.drawable.icon_home,     "Insurance Plans and Info");//done
         itemHospitalList     = new ResideMenuItem(this, R.drawable.icon_home,     "Hospital List");//done
